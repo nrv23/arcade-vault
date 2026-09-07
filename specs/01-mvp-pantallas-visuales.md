@@ -1,6 +1,6 @@
 # SPEC 01 — MVP visual de las pantallas de Arcade Vault
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** —
 > **Fecha:** 2026-09-06
 > **Objetivo:** Portar las cinco pantallas del prototipo de `references/templates/` a Next 16 App Router como MVP puramente visual, sin ningún juego real.
