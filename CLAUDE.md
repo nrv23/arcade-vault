@@ -45,3 +45,8 @@ El directorio de trabajo (`05-arcade-vault/`) **no es la raíz del repositorio**
 - **Tailwind v4 CSS-first.** No existe `tailwind.config.js` ni debe crearse: los tokens de diseño se declaran en `app/globals.css` con `@import "tailwindcss"` y el bloque `@theme inline`. Las variables de fuente (`--font-geist-sans`, `--font-geist-mono`) vienen de `next/font/google` en el layout.
 - Alias de imports: `@/*` apunta a la raíz del proyecto.
 - TypeScript en modo `strict`.
+
+
+## Skills 
+
+Usa siempre /frontend-desing para diseñar la interfaz de usuario
