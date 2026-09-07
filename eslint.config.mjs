@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Prototipo React 18 UMD: fuente de verdad del diseño, no código del proyecto.
+    "references/**",
   ]),
 ]);
 
