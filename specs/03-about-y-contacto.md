@@ -256,7 +256,7 @@ Cada paso deja la aplicación compilando (`npm run build`).
 | Riesgo | Mitigación |
 | --- | --- |
 | `from: nrv23@gmail.com` será rechazado por Resend si ese dominio no está verificado, y `gmail.com` no puede estarlo. | El remitente es una variable de entorno: se cambia a `onboarding@resend.dev` o a un dominio propio sin tocar código. `.env.example` documenta las dos salidas. |
-| Con `onboarding@resend.dev` como remitente, Resend solo entrega a la dirección dueña de la API key. | Queda documentado como limitación conocida del modo de pruebas, no como un fallo de la implementación. |
+| Con `onboarding@resend.dev` como remitente, Resend solo entrega a la dirección dueña de la API key. | Queda documentado como limitación conocida del modo de pruebas, no como un fallo de la implementación. **Confirmado contra la API real durante la implementación:** la cuenta de esta clave es `navemen23@hotmail.com`, así que mientras no haya dominio verificado `CONTACT_TO_EMAIL` debe ser esa dirección; con `nrv23@gmail.com` la API responde 403. |
 | La clave vive en `.env.local`, que está ignorado; quien clone el repositorio no sabrá qué configurar. | `.env.example` versionado y las tres variables documentadas en `CLAUDE.md`. |
 | Es el primer código de servidor del proyecto: un fallo no controlado en la acción rompería la pantalla. | La acción captura todo y siempre devuelve un `ContactState`; nunca lanza. Hay un criterio de aceptación para el caso sin clave. |
 | Sin rate limiting real, el formulario es abusable como emisor de spam. | Honeypot y validación de longitud como mitigación mínima; el límite por IP va en otra spec y queda anotado. |

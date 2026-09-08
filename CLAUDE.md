@@ -31,6 +31,18 @@ npm run lint    # eslint (flat config, sin argumentos)
 
 No hay framework de tests configurado. Si se añade uno, documentar aquí cómo ejecutar un test individual.
 
+## Variables de entorno
+
+El formulario de contacto de `/about` envía correo con Resend y necesita tres variables en `.env.local`, que no se versiona. La plantilla está en `.env.example` (exceptuado del `.env*` de `.gitignore`).
+
+| Variable | Contenido |
+| --- | --- |
+| `RESEND_API_KEY` | Clave de API de Resend. Sin ella la app arranca, pero el formulario responde «Servicio de correo no configurado». |
+| `CONTACT_FROM_EMAIL` | Remitente. Resend exige que su dominio esté verificado en la cuenta; sin dominio propio, usar `onboarding@resend.dev`, que solo entrega a la dirección dueña de la clave. |
+| `CONTACT_TO_EMAIL` | Dirección que recibe los mensajes del formulario. |
+
+Ninguna lleva prefijo `NEXT_PUBLIC_`: solo se leen desde la Server Action `app/actions/contact.ts`. `next dev` hay que reiniciarlo tras cambiarlas.
+
 ## Metodología: Spec Driven Design
 
 El flujo de trabajo del repo es el de `Klerith/fernando-skills` (instalado con `npx skills@latest add Klerith/fernando-skills`):
