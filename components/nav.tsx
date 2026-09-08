@@ -10,8 +10,9 @@ export function Nav() {
   const pathname = usePathname();
   const { user, signOut } = useSession();
 
+  const isHome = pathname === "/";
   // La biblioteca sigue activa en el detalle y en el reproductor.
-  const isLibrary = pathname === "/" || pathname.startsWith("/juegos");
+  const isLibrary = pathname === "/games" || pathname.startsWith("/juegos");
   const isSalon = pathname === "/salon";
   const isAuth = pathname === "/auth";
 
@@ -27,7 +28,14 @@ export function Nav() {
           </div>
         </Link>
         <div className="links">
-          <Link href="/" className={isLibrary ? "active" : ""} onClick={close}>
+          <Link href="/" className={isHome ? "active" : ""} onClick={close}>
+            Inicio
+          </Link>
+          <Link
+            href="/games"
+            className={isLibrary ? "active" : ""}
+            onClick={close}
+          >
             Biblioteca
           </Link>
           <Link
@@ -67,7 +75,14 @@ export function Nav() {
       />
       <aside className={"av-mobile-panel" + (open ? " open" : "")}>
         <div className="pixel neon-cyan mb-4 text-[11px]">MENÚ</div>
-        <Link href="/" className={isLibrary ? "active" : ""} onClick={close}>
+        <Link href="/" className={isHome ? "active" : ""} onClick={close}>
+          Inicio
+        </Link>
+        <Link
+          href="/games"
+          className={isLibrary ? "active" : ""}
+          onClick={close}
+        >
           Biblioteca
         </Link>
         <Link href="/salon" className={isSalon ? "active" : ""} onClick={close}>
