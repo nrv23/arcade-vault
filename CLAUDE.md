@@ -49,7 +49,7 @@ Si las skills `/spec` y `/spec-impl` no aparecen disponibles en la sesión, hay 
 `05-arcade-vault/` **es la raíz del repositorio**: el `.git` está aquí y los comandos de git solo afectan a este proyecto, no al resto del curso. El remoto es `origin` → `https://github.com/nrv23/arcade-vault.git`, rama principal `main`.
 
 ## Convenciones del stack
-
+ 
 - **Next.js 16 + React 19, App Router.** Antes de escribir código de framework, consultar `node_modules/next/dist/docs/` (ver `AGENTS.md`): esta versión tiene cambios que rompen respecto a versiones anteriores.
 - Los tipos de props de rutas son **globales generados**, no importados: `RootLayout` usa `LayoutProps<"/">` directamente. Mismo patrón para `PageProps`.
 - **Tailwind v4 CSS-first.** No existe `tailwind.config.js` ni debe crearse: los tokens de diseño se declaran en `app/globals.css` — la paleta y las fuentes en `:root`, y su exposición como utilidades de Tailwind en el bloque `@theme inline`. Al añadir un token, declararlo en los dos sitios.

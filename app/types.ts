@@ -30,3 +30,26 @@ export interface SavedScore {
   name: string;
   at: number;
 }
+
+/** Fila del ticker de últimas puntuaciones de la portada. */
+export interface TickerEntry {
+  player: string;
+  game: string;
+  score: number;
+  when: string; // relativo y fijo, p. ej. "hace 2 min"
+  color: GameColor;
+}
+
+/** Fila del top de jugadores de la portada. */
+export interface TopPlayer {
+  rank: number;
+  player: string;
+  score: number;
+}
+
+/** Bloque de la franja de estadísticas de la portada. */
+export interface HomeStat {
+  n: string; // "12+", "MILES", "GLOBAL"
+  unit: string;
+  sub: string;
+}

@@ -31,7 +31,7 @@ export default function NotFound() {
       </p>
 
       <div className="mt-6 text-center">
-        <Link href="/" className="btn lg">
+        <Link href="/games" className="btn lg">
           VOLVER AL VAULT
         </Link>
       </div>

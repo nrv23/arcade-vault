@@ -1,19 +1,6 @@
-import type {
-  Game,
-  GameCategory,
-  HomeStat,
-  ScoreRow,
-  TickerEntry,
-  TopPlayer,
-} from "@/app/types";
+// ===== data.jsx — shared mock data =====
 
-/**
- * Capa de datos temporal. Sustituto de la base de datos real: cuando exista,
- * se reemplaza la implementación de este módulo manteniendo las mismas firmas
- * exportadas y ningún componente cambia.
- */
-
-export const GAMES: Game[] = [
+const GAMES = [
   {
     id: "bloque-buster",
     title: "BLOQUE BUSTER",
@@ -104,141 +91,32 @@ export const GAMES: Game[] = [
   },
 ];
 
-/** `"TODOS"` es el centinela de "sin filtro". */
-export const CATS: ("TODOS" | GameCategory)[] = [
-  "TODOS",
-  "ARCADE",
-  "PUZZLE",
-  "SHOOTER",
-  "VERSUS",
-];
+const CATS = ["TODOS", "ARCADE", "PUZZLE", "SHOOTER", "VERSUS"];
 
 const PLAYERS = [
-  "PX_KAI",
-  "NEONFOX",
-  "Z3R0COOL",
-  "M00NRYU",
-  "VAULT_07",
-  "GLITCHA",
-  "ATARI_KID",
-  "CYBER_LU",
-  "MAGENTA88",
-  "SCANLINE",
-  "BIT_LORD",
-  "ARKADYA",
-  "DROID_X",
-  "RGB_QUEEN",
-  "PIXEL_DAD",
-  "RETROVIRA",
-  "VECTORX",
-  "JOY_STK",
+  "PX_KAI", "NEONFOX", "Z3R0COOL", "M00NRYU", "VAULT_07", "GLITCHA",
+  "ATARI_KID", "CYBER_LU", "MAGENTA88", "SCANLINE", "BIT_LORD", "ARKADYA",
+  "DROID_X", "RGB_QUEEN", "PIXEL_DAD", "RETROVIRA", "VECTORX", "JOY_STK",
 ];
 
-/**
- * Generador congruencial lineal. Función pura, sin APIs de navegador: puede
- * ejecutarse en el servidor y devuelve siempre las mismas filas para una semilla.
- */
-export function seededScores(seed: number, count = 12): ScoreRow[] {
+function seededScores(seed, count = 12) {
   let s = seed;
   const rand = () => (s = (s * 9301 + 49297) % 233280) / 233280;
-  const used = new Set<string>();
-  const rows: ScoreRow[] = [];
+  const used = new Set();
+  const rows = [];
   for (let i = 0; i < count; i++) {
-    let name: string;
-    do {
-      name = PLAYERS[Math.floor(rand() * PLAYERS.length)];
-    } while (used.has(name) && used.size < PLAYERS.length);
+    let name;
+    do { name = PLAYERS[Math.floor(rand() * PLAYERS.length)]; } while (used.has(name) && used.size < PLAYERS.length);
     used.add(name);
     const base = Math.floor(50000 + rand() * 250000);
     const score = base - i * Math.floor(2000 + rand() * 4000);
     const day = String(1 + Math.floor(rand() * 28)).padStart(2, "0");
     const mon = String(1 + Math.floor(rand() * 12)).padStart(2, "0");
-    rows.push({
-      rank: i + 1,
-      name,
-      score: Math.max(score, 1000),
-      date: `${day}/${mon}/2026`,
-    });
+    rows.push({ rank: i + 1, name, score: Math.max(score, 1000), date: `${day}/${mon}/2026` });
   }
-  return rows
-    .sort((a, b) => b.score - a.score)
-    .map((r, i) => ({ ...r, rank: i + 1 }));
+  return rows.sort((a, b) => b.score - a.score).map((r, i) => ({ ...r, rank: i + 1 }));
 }
 
-/** Único envoltorio de `toLocaleString("es-ES")` del proyecto. */
-export function formatScore(n: number): string {
-  return n.toLocaleString("es-ES");
-}
-
-/**
- * Datos de escaparate de la portada. No derivan de `GAMES` ni de
- * `seededScores` y no cambian con el tiempo: son los literales de la plantilla
- * `references/templates/home-about/home.jsx`. Cuando exista actividad real,
- * se reemplazan por consultas y `components/home.tsx` no cambia.
- */
-
-export const RECENT_SCORES: TickerEntry[] = [
-  {
-    player: "NEONFOX",
-    game: "Caída",
-    score: 184220,
-    when: "hace 2 min",
-    color: "magenta",
-  },
-  {
-    player: "PX_KAI",
-    game: "Glotón",
-    score: 96400,
-    when: "hace 5 min",
-    color: "yellow",
-  },
-  {
-    player: "Z3R0COOL",
-    game: "Invasores",
-    score: 54190,
-    when: "hace 8 min",
-    color: "green",
-  },
-  {
-    player: "VAULT_07",
-    game: "Rocas",
-    score: 41200,
-    when: "hace 12 min",
-    color: "cyan",
-  },
-  {
-    player: "GLITCHA",
-    game: "Bloque Buster",
-    score: 28450,
-    when: "hace 18 min",
-    color: "cyan",
-  },
-  {
-    player: "ARKADYA",
-    game: "Serpentina",
-    score: 7820,
-    when: "hace 24 min",
-    color: "green",
-  },
-  {
-    player: "CYBER_LU",
-    game: "Ranaria",
-    score: 18900,
-    when: "hace 31 min",
-    color: "yellow",
-  },
-];
-
-export const TOP_PLAYERS: TopPlayer[] = [
-  { rank: 1, player: "NEONFOX", score: 312840 },
-  { rank: 2, player: "PX_KAI", score: 248110 },
-  { rank: 3, player: "M00NRYU", score: 196720 },
-  { rank: 4, player: "VAULT_07", score: 154300 },
-  { rank: 5, player: "GLITCHA", score: 138900 },
-];
-
-export const HOME_STATS: HomeStat[] = [
-  { n: "12+", unit: "JUEGOS", sub: "Y CONTANDO" },
-  { n: "MILES", unit: "DE PARTIDAS", sub: "JUGADAS CADA DÍA" },
-  { n: "GLOBAL", unit: "RANKING", sub: "COMPITE CON EL MUNDO" },
-];
+window.GAMES = GAMES;
+window.CATS = CATS;
+window.seededScores = seededScores;
