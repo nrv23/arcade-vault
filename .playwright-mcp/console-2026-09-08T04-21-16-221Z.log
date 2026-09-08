@@ -1,0 +1,2 @@
+[      95ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ blob:http://localhost:3000/6ca32a2f-1afd-496b-af18-d86abedd7f7c:29904
+[     244ms] [WARNING] You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/ @ blob:http://localhost:3000/408d9e8d-ec02-4812-8f70-d42dd6e5ff65:2

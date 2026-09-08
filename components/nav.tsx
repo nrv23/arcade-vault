@@ -14,6 +14,7 @@ export function Nav() {
   // La biblioteca sigue activa en el detalle y en el reproductor.
   const isLibrary = pathname === "/games" || pathname.startsWith("/juegos");
   const isSalon = pathname === "/salon";
+  const isAbout = pathname === "/about";
   const isAuth = pathname === "/auth";
 
   const close = () => setOpen(false);
@@ -44,6 +45,13 @@ export function Nav() {
             onClick={close}
           >
             Salón de la Fama
+          </Link>
+          <Link
+            href="/about"
+            className={isAbout ? "active" : ""}
+            onClick={close}
+          >
+            Acerca de
           </Link>
         </div>
         <div className="spacer" />
@@ -87,6 +95,9 @@ export function Nav() {
         </Link>
         <Link href="/salon" className={isSalon ? "active" : ""} onClick={close}>
           Salón de la Fama
+        </Link>
+        <Link href="/about" className={isAbout ? "active" : ""} onClick={close}>
+          Acerca de
         </Link>
         <Link href="/auth" className={isAuth ? "active" : ""} onClick={close}>
           {user ? "Cuenta" : "Iniciar Sesión"}

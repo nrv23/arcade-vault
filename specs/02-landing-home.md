@@ -1,6 +1,6 @@
 # SPEC 02 — Landing page de Arcade Vault
 
-> **Estado:** Aprobado
+> **Estado:** Implementado
 > **Depende de:** SPEC 01
 > **Fecha:** 2026-09-07
 > **Objetivo:** Portar la landing page de `references/templates/home-about/home.jsx` a Next 16 como nueva portada del sitio, desplazando la biblioteca a `/games` y añadiendo el enlace `Inicio` a la navegación.
@@ -127,25 +127,25 @@ Cada paso deja la aplicación compilando (`npm run build`).
 
 ## Criterios de aceptación
 
-- [ ] `npm run build` y `npm run lint` terminan sin errores ni warnings.
-- [ ] `/` muestra la landing: hero con el título en tres líneas (blanco, cian, magenta), siluetas de fondo y dos CTA.
-- [ ] Al hacer scroll cada sección aparece con la transición `.reveal.in`; al recargar arriba vuelven a estar ocultas.
-- [ ] La sección `// 01` muestra cuatro tarjetas de feature con su icono y su color: cyan, yellow, magenta y green.
-- [ ] La sección `// 02` muestra seis minicards; al pulsar una se navega a `/juegos/<id>`.
-- [ ] "VER TODOS LOS JUEGOS →" lleva a `/games`.
-- [ ] La sección `// 03` muestra siete filas de ticker y cinco de top jugadores, con la barra `.tp-fill` decreciente y las tres primeras filas destacadas.
-- [ ] "VER SALÓN →" lleva a `/salon`.
-- [ ] La sección `// 04` muestra la tarjeta de precio `$0 / SIEMPRE` con sus seis viñetas, el sello FREE PLAY y las tres FAQ.
-- [ ] "EMPEZAR GRATIS →" y "✦ CREAR CUENTA" llevan a `/auth`.
-- [ ] "INSERTAR MONEDA →" y "▶ EXPLORAR JUEGOS" llevan a `/games`.
-- [ ] La navegación marca `Inicio` activo en `/` y `Biblioteca` activo en `/games` y en `/juegos/*`. El panel móvil se comporta igual.
-- [ ] El logo de la navegación lleva a `/`.
-- [ ] `/games`, `/juegos/[id]`, `/juegos/[id]/jugar`, `/salon`, `/auth` y el 404 siguen funcionando, y ningún botón "volver" apunta a `/`.
-- [ ] A 375 px de ancho ninguna sección desborda horizontalmente.
-- [ ] No hay advertencias de hidratación en la consola en la portada.
-- [ ] El ticker, el top de jugadores y las estadísticas salen de `app/data.ts`; ningún dato queda incrustado en `components/home.tsx`.
-- [ ] Comparada contra `references/templates/home-about/arcade-vault-standalone.html`, la portada coincide en fondo, tipografías, neones y espaciado en escritorio y en móvil.
-- [ ] No existe `tailwind.config.js`, no se añadió ninguna hoja de estilos aparte de `app/globals.css` y no se añadió ninguna dependencia.
+- [ x] `npm run build` y `npm run lint` terminan sin errores ni warnings.
+- [ x] `/` muestra la landing: hero con el título en tres líneas (blanco, cian, magenta), siluetas de fondo y dos CTA.
+- [ x] Al hacer scroll cada sección aparece con la transición `.reveal.in`; al recargar arriba vuelven a estar ocultas.
+- [ x] La sección `// 01` muestra cuatro tarjetas de feature con su icono y su color: cyan, yellow, magenta y green.
+- [ x] La sección `// 02` muestra seis minicards; al pulsar una se navega a `/juegos/<id>`.
+- [ x] "VER TODOS LOS JUEGOS →" lleva a `/games`.
+- [ x] La sección `// 03` muestra siete filas de ticker y cinco de top jugadores, con la barra `.tp-fill` decreciente y las tres primeras filas destacadas.
+- [ x] "VER SALÓN →" lleva a `/salon`.
+- [ x] La sección `// 04` muestra la tarjeta de precio `$0 / SIEMPRE` con sus seis viñetas, el sello FREE PLAY y las tres FAQ.
+- [ x] "EMPEZAR GRATIS →" y "✦ CREAR CUENTA" llevan a `/auth`.
+- [ x] "INSERTAR MONEDA →" y "▶ EXPLORAR JUEGOS" llevan a `/games`.
+- [ x] La navegación marca `Inicio` activo en `/` y `Biblioteca` activo en `/games` y en `/juegos/*`. El panel móvil se comporta igual.
+- [ x] El logo de la navegación lleva a `/`.
+- [ x] `/games`, `/juegos/[id]`, `/juegos/[id]/jugar`, `/salon`, `/auth` y el 404 siguen funcionando, y ningún botón "volver" apunta a `/`.
+- [ x] A 375 px de ancho ninguna sección desborda horizontalmente.
+- [ x] No hay advertencias de hidratación en la consola en la portada.
+- [ x] El ticker, el top de jugadores y las estadísticas salen de `app/data.ts`; ningún dato queda incrustado en `components/home.tsx`.
+- [ x] Comparada contra `references/templates/home-about/arcade-vault-standalone.html`, la portada coincide en fondo, tipografías, neones y espaciado en escritorio y en móvil.
+- [ x] No existe `tailwind.config.js`, no se añadió ninguna hoja de estilos aparte de `app/globals.css` y no se añadió ninguna dependencia.
 
 ## Decisiones
 
